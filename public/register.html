@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <!-- ใช้ Bootstrap ทำให้ฟอร์มสวย -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -12,44 +13,78 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow p-4" style="width: 400px;">
             <h3 class="text-center mb-4">Register</h3>
-            <form>
+
+            <!-- ฟอร์มสมัครสมาชิก -->
+            <form id="registerForm">
+                <!-- Full name -->
                 <div class="mb-3">
-                    <label for="Fullname" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="Fullname" placeholder="Enter you name">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullname" placeholder="Enter your name" required>
                 </div>
+
+                <!-- Email -->
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email Address></label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
                 </div>
+
+                <!-- Password -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
                 </div>
+
+                <!-- Confirm Password -->
                 <div class="mb-3">
                     <label for="confirmpassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmpassword" placeholder="confirm password">
+                    <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm password" required>
                 </div>
-                <button type="submit" class="btn btn-sucess w-100">Register</button>
-                <p class="text-center mt-3">มีบัญชีเเล้ว ?<a href="./login.html">Login</a></p>
+
+                <!-- ปุ่มสมัคร -->
+                <button type="submit" class="btn btn-success w-100">Register</button>
+                <p class="text-center mt-3">มีบัญชีแล้ว ? <a href="./login.html">Login</a></p>
             </form>
+
+            <!-- ข้อความแสดงผล -->
+            <p id="msg" class="text-center mt-2 text-danger"></p>
         </div>
     </div>
+
     <script>
-        async function register() {
-            const username = document.getElementById('username').value
-            const password = document.getElementById('password').value
+        // ดักการ submit form
+        document.getElementById("registerForm").addEventListener("submit", async (e) => {
+            e.preventDefault(); // ป้องกันการ reload หน้า
 
-            const res = await fetch('/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            })
+            // ดึงค่าจาก input
+            const fullname = document.getElementById("fullname").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirm = document.getElementById("confirmpassword").value;
 
-            const data = await res.json()
-            document.getElementById('msg').innerText = data.message
-        }
+            // เช็คว่ารหัสผ่านตรงกันไหม
+            if (password !== confirm) {
+                document.getElementById("msg").innerText = "รหัสผ่านไม่ตรงกัน!";
+                return;
+            }
+
+            // ส่งข้อมูลไปที่ backend API
+            const res = await fetch("/api/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fullname, email, password })
+            });
+
+            // แปลงผลลัพธ์เป็น JSON
+            const data = await res.json();
+            document.getElementById("msg").innerText = data.message;
+
+            // ถ้าสำเร็จ redirect ไปหน้า login
+            if (res.ok) {
+                alert("สมัครสมาชิกสำเร็จ!");
+                window.location.href = "./login.html";
+            }
+        });
     </script>
-
 </body>
 
 </html>

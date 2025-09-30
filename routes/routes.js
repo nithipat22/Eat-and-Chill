@@ -1,15 +1,12 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-// import route ของ user
-const registerRoute = require('../controller/user/registre')
-const loginRoute = require('../controller/user/login')
-const deleteUserRoute = require('../controller/user/deleteuser')
+// import route
+const registerRoute = require('../controller/user/registre');
+const loginRoute = require('../controller/user/login');
 
-// 👉 กำหนด path ของ API
-router.use('/register', registerRoute)
-router.use('/login', loginRoute)
-router.use('/delete', deleteUserRoute)
+// กำหนด path API
+router.use('/register', registerRoute);
+router.use('/login', loginRoute);
 
-// export ออกไปให้ server.js ใช้
-module.exports = router
+module.exports = router;
