@@ -11,29 +11,60 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e53935;">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.html">Eat & Chill</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">หน้าแรก</a>
-                    </li>
-                </ul>
+                <ul class="navbar-nav ms-auto"></ul>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light me-2" href="./index.html">หน้าแรก</a>
+                </li>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./contect.html">ติดต่อ</a>
+                        <a class="btn btn-outline-light me-2" href="./contect.html">ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./login.html">เข้าสู่ระบบ</a>
+                        <a class="btn btn-outline-light " href="./login.html">เข้าสู่ระบบ</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div class="container my-5">
+        <div class="row g-4 align-items-stretch">
+
+            <div class="col-md-6">
+                <div class="p-4 bg-light rounded shadow-sm w-100 h-100">
+                    <span class="badge bg-danger mb-2">โปรโมชั่น: ส่งฟรีเมื่อครบ 200 บาท</span>
+                    <h3>เมนูเด็ด ส่งด่วนถึงบ้าน</h3>
+                    <p></p>
+
+                    <div class="mb-3">
+                        <a href="./noodle.html" class="badge bg-secondary text-decoration-none me-1">ก๋วยเตี๋ยว</a>
+                        <a href="./somtum.html" class="badge bg-secondary text-decoration-none me-1">ยำ/ส้มตำ</a>
+                        <a href="./fried.html" class="badge bg-secondary text-decoration-none me-1">ของทอด</a>
+                    </div>
+
+                    <form class="row g-2">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="ค้นหาเมนูอาหาร">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-danger w-100">ค้นหา</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex">
+                <img src="../img/download.jpg" class="img-fluid rounded shadow-sm w-100 h-100" style="object-fit: cover;" alt="อาหาร">
+            </div>
+        </div>
+    </div>
 
 
 
