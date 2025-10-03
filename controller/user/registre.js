@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs'); // ใช้เข้ารหัส password
-const pool = require('../../controller/db'); // เชื่อม DB จาก db.js
+const pool = require('./db'); // เชื่อม DB จาก db.js
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const pool = require('../../controller/db');
+const pool = require('./db');
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.put('/', async (req, res) => {
 
     try {
         // ดึงข้อมูล user เดิม
-        const [rows] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+        const [rows] = await pool.query('SELECT * FROM users WHERE namusere = ?', [username]);
 
         if (rows.length === 0) {
             return res.status(404).json({ message: 'ไม่พบผู้ใช้นี้' });

@@ -6,7 +6,8 @@ const registerRoute = require('../controller/user/registre');
 const loginRoute = require('../controller/user/login');
 
 // กำหนด path API
-router.use('/register', registerRoute);
-router.use('/login', loginRoute);
+router.use('/register', registerRoute);// สมัครสมาชิก
+
+router.use('/login', loginRoute);// เข้าสู่ระบบ
 
 module.exports = router;
